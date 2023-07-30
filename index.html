@@ -13,11 +13,20 @@
             <h1 id="timezone"></h1>
             <h1 id="time"></h2>
             <div class="options">
-                <button id="toggle-time" class="hour12">24 H</button><button id="background-change">Change Background</button>
+                <button id="toggle-time" class="hour12">24 H</button>
+                <button id="background-change">Change Background</button>
+                <button id="timezone-change">Select Timezone</button>
             </div>            
         </div>
-
+        <dialog id="timezone-options">
+            <div class="timezone-header">
+                <button id="exit-button">Exit</button>
+                <h2>Timezones</h2>
+            </div>
+            <div id="timezone-container"></div>
+    </dialog>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
