@@ -13,7 +13,7 @@
     color: white;
     user-select: none;
 }
-#timezone {
+#timezone-display {
     font-weight: normal;
 }
 
@@ -49,6 +49,9 @@
     padding: 20px 30px;
     border: none;
 }
+#timezone {display: none; width: 100%;}
+#timezone-options button:hover {letter-spacing: 5px;}
+
 #timezone-options #exit-button {
     background-color: red;
     color: white;
@@ -58,6 +61,8 @@
     transition: padding .5s, margin .5s;
     cursor: pointer;
     position: fixed;
+
+    transition: letter-spacing 0.3s;
 
 } 
 #exit-button:hover {background-color: white;}
@@ -81,18 +86,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 7px;
 }
-.bottom-spacer {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
 
-    height: 20px;
-    width: 20px;
-    background-color: white;
-}
-
-#time {
+#time-display {
     width: 611px; height: 250px; max-width: 700px;
     font-size: 100px;
 

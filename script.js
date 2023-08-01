@@ -6,8 +6,8 @@ setInterval(function displayTime() {
     var time = dateTime.split(' ')[0];
     var amOrPm = dateTime.split(' ')[1];
 
-    var timeDisplay = document.querySelector('#time');
-    var timezoneDisplay = document.querySelector('#timezone')
+    globalThis.timeDisplay = document.querySelector('#time-display');
+    var timezoneDisplay = document.querySelector('#timezone-display')
     
     
     timeDisplay.innerHTML = `${time} ${amOrPm=='AM'||amOrPm=='PM' ? amOrPm : ''}`;
@@ -19,15 +19,20 @@ setInterval(function displayTime() {
 toggleButton = document.querySelector('#toggle-time');
 document.querySelector('#toggle-time').addEventListener('click', ()=> {
     toggleState = toggleButton.className;
+
+    // Time switching to military time
     if (toggleState == 'hour12') {
         hour12 = false;
         toggleButton.classList.toggle('hour12');
         toggleButton.innerHTML = '12 H';
+    // Time switching to 12 hour time
     } else {
         hour12 = true;
         toggleButton.classList.toggle('hour12');
         toggleButton.innerHTML = '24 H';
     }
+    timeDisplay.innerHTML = 'converting..'
+    
 })
 
 // Handling background changes
@@ -54,9 +59,6 @@ var timezoneButton = document.querySelector('#timezone-change');
 var timezoneOptions = document.querySelector('#timezone-options');
 var timezoneExit = document.querySelector('#exit-button');
 var timezoneContainer = document.querySelector('#timezone-container');
-timezoneButton.addEventListener('click', ()=> {timezoneOptions.showModal();})
-timezoneExit.addEventListener('click', ()=> {timezoneOptions.close();})
-
 
 fetch('timezones.json')
     .then(response => response.json())
@@ -64,6 +66,20 @@ fetch('timezones.json')
         data.map(timezone => {
             var option = document.createElement('button');
             timezoneContainer.appendChild(option);
+            option.setAttribute('id', 'timezone');
             option.innerHTML = timezone.timezone;
+            globalThis.timezones = timezoneContainer.querySelectorAll('#timezone');
         })
     })
+
+// Showing the timezone list
+
+timezoneButton.addEventListener('click', ()=> {
+    timezoneOptions.showModal();
+    timezones.forEach(timezoneButton => {timezoneButton.style.display = 'block'; timezoneButton.style.transition = 'letter-spacing 0.5s'})
+})
+timezoneExit.addEventListener('click', ()=> {
+    timezoneOptions.close();
+    timezones.forEach(timezoneButton => {timezoneButton.style.display = 'none';})
+})
+
