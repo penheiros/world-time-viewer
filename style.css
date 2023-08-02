@@ -1,3 +1,4 @@
+body {zoom: '70%'}
 #container {
     display: flex; flex-direction: column; gap: 10px;
     position: absolute; justify-content: center;
@@ -131,6 +132,15 @@
     margin-left: 0; margin-right: 0;
 }
 
+.contact {
+    color: white; font-weight: 200; font-size: 25px; 
+    position: fixed; bottom: 5px; user-select: none;
+}
+.gmail {
+    background: none;
+    padding: 0;
+    user-select: all;
+}
 @keyframes bounce {
 }
 #animation-block {

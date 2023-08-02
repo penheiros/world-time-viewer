@@ -1,17 +1,22 @@
-var hour12 = true
+
+var hour12 = true;
+var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 setInterval(function displayTime() {
 
-    var dateTime = new Date().toLocaleString('en-US', {hour12 : hour12, timeStyle: 'full'});
+    var dateTime = new Date().toLocaleString('en-US', {
+        hour12 : hour12, timeStyle: 'full', timeZone: timezone
+    });
+
     var time = dateTime.split(' ')[0];
     var amOrPm = dateTime.split(' ')[1];
+    var timezoneName = dateTime.split(' ').slice(2).join(' ');
 
     globalThis.timeDisplay = document.querySelector('#time-display');
-    var timezoneDisplay = document.querySelector('#timezone-display')
-    
+    globalThis.timezoneDisplay = document.querySelector('#timezone-display');
     
     timeDisplay.innerHTML = `${time} ${amOrPm=='AM'||amOrPm=='PM' ? amOrPm : ''}`;
-    timezoneDisplay.innerHTML = `${dateTime.split(' ')[2]} ${dateTime.split(' ')[3]}`;
+    timezoneDisplay.innerHTML = timezoneName
 
 }, 1000)
 
@@ -54,7 +59,6 @@ document.querySelector('#background-change').addEventListener('click', ()=> {
 })
 
 // Handling timezone changes
-
 var timezoneButton = document.querySelector('#timezone-change');
 var timezoneOptions = document.querySelector('#timezone-options');
 var timezoneExit = document.querySelector('#exit-button');
@@ -72,14 +76,26 @@ fetch('timezones.json')
         })
     })
 
-// Showing the timezone list
-
+// Displaying timezone options
 timezoneButton.addEventListener('click', ()=> {
     timezoneOptions.showModal();
-    timezones.forEach(timezoneButton => {timezoneButton.style.display = 'block'; timezoneButton.style.transition = 'letter-spacing 0.5s'})
-})
-timezoneExit.addEventListener('click', ()=> {
-    timezoneOptions.close();
-    timezones.forEach(timezoneButton => {timezoneButton.style.display = 'none';})
+    timezones.forEach(timezoneButton => {
+        timezoneButton.style.display = 'block'; 
+        timezoneButton.style.transition = 'letter-spacing 0.5s';
+        
+        // Displaying timezone
+        timezoneButton.addEventListener('click', ()=> {
+            timezone = timezoneButton.innerHTML;
+            timeDisplay.innerHTML = 'converting..';
+            closeOptions();
+        })
+    });
 })
 
+// Closing timezone options
+function closeOptions() {
+    timezoneOptions.close();
+    timezones.forEach(timezoneButton => {timezoneButton.style.display = 'none';})
+}
+
+timezoneExit.addEventListener('click', closeOptions);
