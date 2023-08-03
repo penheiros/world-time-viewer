@@ -24,7 +24,7 @@ body {zoom: '70%'}
     pointer-events: none;
     transform: translate(0, 120px);
 
-    width: 750px; 
+    width: 550px; 
     height: 600px;
     padding: 30px;
 
@@ -49,6 +49,7 @@ body {zoom: '70%'}
     font-size: 20px;
     padding: 20px 30px;
     border: none;
+    letter-spacing: 2px;
 }
 #timezone {display: none; width: 100%;}
 #timezone-options button:hover {letter-spacing: 5px;}
@@ -76,6 +77,7 @@ body {zoom: '70%'}
     padding-bottom: 20px;
     border-bottom: 1px solid white;
 }
+
 #timezone-options h2 {
     color: white;
     width: 100%;
@@ -83,12 +85,28 @@ body {zoom: '70%'}
     text-transform: uppercase;
     letter-spacing: 7px;
 }
+
+#search-bar {
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+
+    color: white;
+    background-color: black; 
+
+    border: none;
+    border: 1px solid white;
+}
+.hidden {display: none;}
+
 #timezone-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 7px;
+    gap: 10px;
 }
 
 #time-display {
@@ -141,6 +159,7 @@ body {zoom: '70%'}
     padding: 0;
     user-select: all;
 }
+
 @keyframes bounce {
 }
 #animation-block {
