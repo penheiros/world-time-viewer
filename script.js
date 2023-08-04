@@ -40,13 +40,13 @@ document.querySelector('#toggle-time').addEventListener('click', ()=> {
 var backgrounds = {
     'red' : 'linear-gradient(lightcoral, lightcoral)',
     'blue': 'linear-gradient(rgba(143,194,255,1), rgba(143,194,255,1))',
-    'pink': 'linear-gradient(lightpink, pink)',
+    'pink': 'linear-gradient(lightpink, lightpink)',
     'green' : 'linear-gradient(lightgreen, lightgreen)',
     'pinkblue' : 'linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,223,253,1) 50%, rgba(213,144,255,1) 100%)'
 }
 var backgroundChangeCount = 0;
 document.querySelector('#background-change').addEventListener('click', ()=> {
-    var backgroundContainer = document.querySelector('#container');
+    var backgroundContainer = document.querySelector('[data-body]');
     var backgroundKeys = Object.keys(backgrounds)
     backgroundContainer.style.backgroundImage = backgrounds[backgroundKeys[backgroundChangeCount]];
     if (backgroundChangeCount == backgroundKeys.length - 1) {backgroundChangeCount = 0;} 
