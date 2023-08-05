@@ -1,29 +1,29 @@
-body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,223,253,1) 50%, rgba(213,144,255,1) 100%);}
-
-#container {
-    display: flex; flex-direction: column; gap: 10px;
-    position: absolute; justify-content: center;
-    left: 0; right: 0; bottom: 0; top: 0;
-    align-items: center;
-    font-family: Arial;
+body {
+    background-image: linear-gradient(white, white);
+}
+:root {
+    --box-shadow-properties: 0px 0px 20px 10px rgba(16,16,16,0.06);
+}
+.container {
+    display: flex; flex-direction: column; position: absolute; justify-content: center;
+    left: 0; right: 0; bottom: 0; top: 0; gap: 10px;
+    align-items: center; font-family: Arial;
 }
 .secondary-container {
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; user-select: none;
     height: 100%; 
-    color: white;
-    user-select: none;
+    color: black;
 }
+.secondary-container button, .secondary-container h1{border-radius: 20px;}
 
 #timezone-display {font-weight: normal;}
 #time-display {
-    width: 100%; height: 250px; max-width: 700px;
-    font-size: 500%;
+    width: 100%; height: 250px; font-size: 500%;
 
-    box-shadow: 0px 0px 15px 10px rgba(79, 74, 81, 0.084);
+    box-shadow: var(--box-shadow-properties);
     backdrop-filter: blur(5px);
     display: flex; align-items: center; justify-content: center;
-    border-radius: 20px;
     margin-top: 40px;
     
 }
@@ -35,14 +35,11 @@ body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,2
     width: 100%;
 }
 .options button {
-    padding: 20px;
-    border-radius: 20px;
-    margin-left: 20px; margin-right: 20px;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 0 10px 5px rgba(41, 37, 43, 0.084);
+    padding: 20px; margin-left: 20px; margin-right: 20px;
+    cursor: pointer; border: none;
+    box-shadow: var(--box-shadow-properties);
     background-color: transparent;
-    color: white;
+    color: black;
     font-size: 20px;
     backdrop-filter: blur(10px);
 
@@ -54,20 +51,10 @@ body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,2
 }
 
 #timezone-options {
-    display: block;
-    inset: 0;
-    pointer-events: none;
-    transform: translate(0, 120px);
-
-    width: 550px; 
-    height: 600px;
-    padding: 30px;
-
-    border: none;
-    border-radius: 20px;
-    
-    opacity: 0;
-    background-color: black;
+    display: block; inset: 0; pointer-events: none; transform: translate(0, 120px);
+    width: 550px; height: 600px; padding: 30px;
+    border: none; border-radius: 20px;
+    opacity: 0; background-color: black;
 
     transition: opacity 0.5s, transform 0.5s;
 }
@@ -78,6 +65,11 @@ body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,2
     transform: translate(0, 0);
 }
 #timezone-options::backdrop {backdrop-filter: blur(100px);}
+
+.timezone-header {
+    display: flex; width: 100%; margin-bottom: 40px; padding-bottom: 20px;
+    border-bottom: 1px solid white;
+}
 
 #timezone-options button {
     border-radius: 20px;
@@ -90,52 +82,25 @@ body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,2
 #timezone-options button:hover {letter-spacing: 5px;}
 
 #timezone-options #exit-button {
-    background-color: red;
-    color: white;
-
+    background-color: red; color: white;
     padding: 20px 20px;
+    
+    cursor: pointer; position: fixed;
 
-    transition: padding .5s, margin .5s;
-    cursor: pointer;
-    position: fixed;
-
-    transition: letter-spacing 0.3s;
-
+    transition: padding .5s, letter-spacing 0.3s, margin .5s;
 } 
 #exit-button:hover {background-color: white;}
-
-.timezone-header {
-    display: flex;
-
-    width: 100%;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid white;
-}
-
-#timezone-options h2 {
+.header-title {
     color: white;
     width: 100%;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 7px;
 }
-
 #search-bar {
-    width: 100%;
-    padding: 20px;
-    font-size: 20px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-
-    color: white;
-    background-color: black; 
-
-    border: none;
-    border: 1px solid white;
+    width: 100%;padding: 20px;font-size: 20px; border-radius: 20px; margin-bottom: 30px;
+    color: white; background-color: black; border: none; border: 1px solid white;
 }
-.hidden {display: none;}
-
 #timezone-container {
     display: flex;
     flex-direction: column;
@@ -143,10 +108,9 @@ body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,2
     align-items: center;
     gap: 10px;
 }
+.hidden {display: none;}
 
 @media screen and (max-width: 500px) {
-    body {overflow: hidden;}
-
     #time-display {
         width: 100%; height: 100px; 
         font-size: 230%;
@@ -157,14 +121,14 @@ body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,2
         font-weight: normal;
         font-size: 100%;
     }
-    .options {
-        gap: 0;
-    }
+    .options {gap: 0;}
     .options button{
         font-size: 50%;
         margin: 10px;
         padding: 10px 15px;
     }
+    .options button:hover {margin: 10px; padding: 10px 15px;}
+    
 
     #timezone-options {
         display: block;
@@ -184,13 +148,19 @@ body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,2
     
         transition: opacity 0.5s, transform 0.5s;
     }
-    #timezone-options h2 {
+
+    .timezone-header {
+        display: flex; width: 100%; margin-bottom: 40px; padding-bottom: 20px;
+        border-bottom: 1px solid white;
+    }
+    .header-title {
         color: white;
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 7px;
-        font-size: 10px;
+        font-size: 12px;
     }
+
     #timezone-options #exit-button {
         background-color: red;
         color: white;
@@ -202,6 +172,9 @@ body {background-image: linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,2
         position: fixed;
     
         transition: letter-spacing 0.3s;
-    
-    } 
+    }
+
+    #timezone-options #exit-button:hover {
+        letter-spacing: 0.5vh;
+    }
 }

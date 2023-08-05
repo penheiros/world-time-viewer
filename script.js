@@ -1,3 +1,4 @@
+var root = document.querySelector(':root');
 var hour12 = true;
 var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 setInterval(function displayTime() {
@@ -14,7 +15,7 @@ setInterval(function displayTime() {
     globalThis.timezoneDisplay = document.querySelector('#timezone-display');
     
     timeDisplay.innerHTML = `${time} ${amOrPm=='AM'||amOrPm=='PM' ? amOrPm : ''}`;
-    timezoneDisplay.innerHTML = timezoneName
+    timezoneDisplay.innerHTML = timezoneName;
 
 }, 1000)
 // Switching between military and 12 hour time
@@ -33,22 +34,37 @@ document.querySelector('#toggle-time').addEventListener('click', ()=> {
         toggleButton.classList.toggle('hour12');
         toggleButton.innerHTML = '24 H';
     }
-    timeDisplay.innerHTML = 'converting..'
+    timeDisplay.innerHTML = '....'
     
 })
 // Handling background changes
-var backgrounds = {
-    'red' : 'linear-gradient(lightcoral, lightcoral)',
-    'blue': 'linear-gradient(rgba(143,194,255,1), rgba(143,194,255,1))',
-    'pink': 'linear-gradient(lightpink, lightpink)',
-    'green' : 'linear-gradient(lightgreen, lightgreen)',
-    'pinkblue' : 'linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,223,253,1) 50%, rgba(213,144,255,1) 100%)'
-}
+var backgrounds;
 var backgroundChangeCount = 0;
+var backgroundContainer = document.querySelector('[data-body]');
+var borderStyleValue = getComputedStyle(root).getPropertyValue('--box-shadow-properties');
+
+fetch('data-files/backgrounds.json')
+.then(response => response.json())
+.then(data => {backgrounds = data.map(background => {return {name: background.name, color: background.color}})});
+
 document.querySelector('#background-change').addEventListener('click', ()=> {
-    var backgroundContainer = document.querySelector('[data-body]');
     var backgroundKeys = Object.keys(backgrounds)
-    backgroundContainer.style.backgroundImage = backgrounds[backgroundKeys[backgroundChangeCount]];
+    var background = backgrounds[backgroundKeys[backgroundChangeCount]];
+    var elementsToChange = document.querySelectorAll('.secondary-container button, .secondary-container h1');
+    // Separate border properties changes for black and white colors
+    if (background.name == 'black') {
+        root.style.setProperty('--box-shadow-properties', '0px 0px 5px 0px #fff');
+        elementsToChange.forEach(element => {element.style.color = 'white'});
+    }
+    else if (background.name == 'white') {
+        root.style.setProperty('--box-shadow-properties', '0px 0px 20px 10px rgba(16,16,16,0.06)');
+        elementsToChange.forEach(element => {element.style.color = 'black'});
+    } else {
+        root.style.setProperty('--box-shadow-properties', '0px 0px 20px 10px rgba(16,16,16,0.06)');
+        elementsToChange.forEach(element => {element.style.color = 'white'});
+    };
+
+    backgroundContainer.style.backgroundImage = background.color;
     if (backgroundChangeCount == backgroundKeys.length - 1) {backgroundChangeCount = 0;} 
     else {backgroundChangeCount++;}
 })
@@ -57,14 +73,13 @@ var timezoneButton = document.querySelector('#timezone-change');
 var timezoneOptions = document.querySelector('#timezone-options');
 var timezoneExit = document.querySelector('#exit-button');
 var timezoneContainer = document.querySelector('#timezone-container');
-var timezoneList = []
-fetch('timezones.json')
+var timezoneList;
+fetch('data-files/timezones.json')
     .then(response => response.json())
-    .then(data => {
-        timezoneList = data.map(timezone => {
+    .then(data => {timezoneList = data.map(timezone => {
             var option = document.createElement('button');
             timezoneContainer.appendChild(option);
-            option.setAttribute('id', 'timezone');
+            option.setAttribute('id', 'timezone'); 
             option.innerHTML = timezone.timezone;
             globalThis.timezones = timezoneContainer.querySelectorAll('#timezone');
 
@@ -75,12 +90,11 @@ fetch('timezones.json')
 timezoneButton.addEventListener('click', ()=> {
     timezoneOptions.showModal();
     timezones.forEach(timezoneButton => {
-        timezoneButton.style.display = 'block'; 
-        timezoneButton.style.transition = 'letter-spacing 0.5s';
+        timezoneButton.style.display = 'block'; timezoneButton.style.transition = 'letter-spacing 0.5s';
         // Displaying timezone
         timezoneButton.addEventListener('click', ()=> {
             timezone = timezoneButton.innerHTML;
-            timeDisplay.innerHTML = 'converting..';
+            timeDisplay.innerHTML = '....';
             closeOptions();
         })
         // Timezone searchbar
