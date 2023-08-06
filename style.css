@@ -67,9 +67,29 @@ body {
 #timezone-options::backdrop {backdrop-filter: blur(100px);}
 
 .timezone-header {
+    align-items: center;
     display: flex; width: 100%; margin-bottom: 40px; padding-bottom: 20px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid white; color: white;
+    user-select: none; justify-content: center;
 }
+#timezone-options #exit-button {
+    background-color: red; color: white;
+    padding: 20px 18px;
+    
+    cursor: pointer;
+
+    transition: padding .5s, margin .5s;
+}
+
+.header-title {
+    color: white;width: 100%; text-align: center; text-transform: uppercase;
+    letter-spacing: 7px; 
+}
+.help-info {
+    border: 1px solid white; border-radius: 50%; margin: 0; padding: 10px 20px;
+    cursor:help; transition: background-color 0.3s, color 0.3s;;
+}
+.help-info:hover {background-color: #fff; color:black;}
 
 #timezone-options button {
     border-radius: 20px;
@@ -79,28 +99,16 @@ body {
     letter-spacing: 2px;
 }
 #timezone {display: none; width: 100%;}
-#timezone-options button:hover {letter-spacing: 5px;}
+#timezone-container button:hover {letter-spacing: 5px;}
 
-#timezone-options #exit-button {
-    background-color: red; color: white;
-    padding: 20px 20px;
-    
-    cursor: pointer; position: fixed;
 
-    transition: padding .5s, letter-spacing 0.3s, margin .5s;
-} 
-#exit-button:hover {background-color: white;}
-.header-title {
-    color: white;
-    width: 100%;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 7px;
-}
+
+
 #search-bar {
     width: 100%;padding: 20px;font-size: 20px; border-radius: 20px; margin-bottom: 30px;
     color: white; background-color: black; border: none; border: 1px solid white;
 }
+
 #timezone-container {
     display: flex;
     flex-direction: column;
@@ -112,10 +120,11 @@ body {
 
 @media screen and (max-width: 500px) {
     #time-display {
-        width: 100%; height: 100px; 
-        font-size: 230%;
+        width: 100%; height: 100px; font-size: 230%;
         margin-top: 10px; margin-bottom: 10px;
         padding: 0;
+
+        --box-shadow-properties: 0px 0px 10px 3px rgba(16,16,16,0.06);
     }
     #timezone-display {
         font-weight: normal;
@@ -126,6 +135,7 @@ body {
         font-size: 50%;
         margin: 10px;
         padding: 10px 15px;
+        --box-shadow-properties: 0px 0px 10px 3px rgba(16,16,16,0.06);
     }
     .options button:hover {margin: 10px; padding: 10px 15px;}
     
@@ -152,6 +162,17 @@ body {
     .timezone-header {
         display: flex; width: 100%; margin-bottom: 40px; padding-bottom: 20px;
         border-bottom: 1px solid white;
+    }    
+    #timezone-options #exit-button {
+        background-color: red;
+        color: white;
+    
+        padding: 10px 10px;
+        font-size: 50%;
+        transition: padding .5s, margin .5s;
+        cursor: pointer;
+    
+        transition: letter-spacing 0.3s;
     }
     .header-title {
         color: white;
@@ -160,21 +181,7 @@ body {
         letter-spacing: 7px;
         font-size: 12px;
     }
+    .help-info {font-size: 50%; padding: 5px 10px;}
 
-    #timezone-options #exit-button {
-        background-color: red;
-        color: white;
-    
-        padding: 10px 10px;
-        font-size: 10px;
-        transition: padding .5s, margin .5s;
-        cursor: pointer;
-        position: fixed;
-    
-        transition: letter-spacing 0.3s;
-    }
 
-    #timezone-options #exit-button:hover {
-        letter-spacing: 0.5vh;
-    }
 }

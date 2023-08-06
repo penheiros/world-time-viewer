@@ -1,6 +1,7 @@
 var root = document.querySelector(':root');
 var hour12 = true;
 var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
 setInterval(function displayTime() {
 
     var dateTime = new Date().toLocaleString('en-US', {
@@ -51,15 +52,18 @@ document.querySelector('#background-change').addEventListener('click', ()=> {
     var backgroundKeys = Object.keys(backgrounds)
     var background = backgrounds[backgroundKeys[backgroundChangeCount]];
     var elementsToChange = document.querySelectorAll('.secondary-container button, .secondary-container h1');
+
     // Separate border properties changes for black and white colors
     if (background.name == 'black') {
         root.style.setProperty('--box-shadow-properties', '0px 0px 5px 0px #fff');
         elementsToChange.forEach(element => {element.style.color = 'white'});
     }
+
     else if (background.name == 'white') {
         root.style.setProperty('--box-shadow-properties', '0px 0px 20px 10px rgba(16,16,16,0.06)');
         elementsToChange.forEach(element => {element.style.color = 'black'});
-    } else {
+    } 
+    else {
         root.style.setProperty('--box-shadow-properties', '0px 0px 20px 10px rgba(16,16,16,0.06)');
         elementsToChange.forEach(element => {element.style.color = 'white'});
     };
@@ -68,6 +72,7 @@ document.querySelector('#background-change').addEventListener('click', ()=> {
     if (backgroundChangeCount == backgroundKeys.length - 1) {backgroundChangeCount = 0;} 
     else {backgroundChangeCount++;}
 })
+
 // Handling timezone changes
 var timezoneButton = document.querySelector('#timezone-change');
 var timezoneOptions = document.querySelector('#timezone-options');
@@ -85,7 +90,8 @@ fetch('data-files/timezones.json')
 
             return {timezoneName: timezone.timezone, timezoneButton: option};
         })
-    })
+    });
+
 // Displaying timezone options
 timezoneButton.addEventListener('click', ()=> {
     timezoneOptions.showModal();
@@ -109,6 +115,7 @@ timezoneButton.addEventListener('click', ()=> {
 
     });
 })
+
 // Closing timezone options
 function closeOptions() {
     timezoneOptions.close();
