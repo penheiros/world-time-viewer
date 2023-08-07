@@ -2,7 +2,8 @@ body {
     background-image: linear-gradient(white, white);
 }
 :root {
-    --box-shadow-properties: 0px 0px 20px 10px rgba(16,16,16,0.06);
+    --box-shadow-blur: 1.5vh;
+    --box-shadow-properties: 0px 0px var(--box-shadow-blur) 5px rgba(16,16,16,0.06);
 }
 .container {
     display: flex; flex-direction: column; position: absolute; justify-content: center;
@@ -123,8 +124,6 @@ body {
         width: 100%; height: 100px; font-size: 230%;
         margin-top: 10px; margin-bottom: 10px;
         padding: 0;
-
-        --box-shadow-properties: 0px 0px 10px 3px rgba(16,16,16,0.06);
     }
     #timezone-display {
         font-weight: normal;
@@ -135,7 +134,7 @@ body {
         font-size: 50%;
         margin: 10px;
         padding: 10px 15px;
-        --box-shadow-properties: 0px 0px 10px 3px rgba(16,16,16,0.06);
+        
     }
     .options button:hover {margin: 10px; padding: 10px 15px;}
     
