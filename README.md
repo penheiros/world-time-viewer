@@ -1,2 +1,2 @@
-# world-time-viewer
+# World Time Viewer
  
