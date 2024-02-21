@@ -1,9 +1,8 @@
 [
-    {"color" : "linear-gradient(rgb(16,16,16),rgb(16,16,16)) ", "name" : "black"},
-    {"color" : "linear-gradient(lightcoral, lightcoral)", "name" : "red"},
-    {"color": "linear-gradient(rgba(143,194,255,1), rgba(143,194,255,1))", "name" : "blue"},
-    {"color": "linear-gradient(lightpink, lightpink)", "name" : "pink"},
-    {"color" : "linear-gradient(lightgreen, lightgreen)", "name" : "green"},
+    {"color" : "linear-gradient(rgb(153, 55, 78), rgb(153, 55, 78)", "name" : "red"},
+    {"color": "linear-gradient(rgba(58, 72, 145), rgba(58, 72, 145))", "name" : "blue"},
+    {"color": "linear-gradient(rgb(150, 77, 132), rgb(150, 77, 132))", "name" : "pink"},
+    {"color" : "linear-gradient(rgb(86, 140, 107), rgb(86, 140, 107))", "name" : "green"},
     {"color" : "linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,223,253,1) 50%, rgba(213,144,255,1) 100%)", "name" : "pinkblue"},
-    {"color" : "linear-gradient(rgb(190, 143, 143, 0.391), rgb(190, 143, 143, 0.391)", "name" : "white"}
+    {"color" : "linear-gradient(rgb(245, 242, 242), rgb(245, 242, 242)", "name" : "white"}
 ]

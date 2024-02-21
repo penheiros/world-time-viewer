@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(190, 143, 143, 0.391);
+    background-color: rgba(245, 242, 242);
 }
 :root {
     --box-shadow-blur: 3vh;
@@ -74,12 +74,12 @@ body {
     user-select: none; justify-content: center;
 }
 #timezone-options #exit-button {
-    background-color: red; color: white; border: none;
+    background-color: rgb(153, 55, 78); color: white; border: none;
     padding: 20px 18px; cursor: pointer; border-radius: 20px; font-size: 20px;
     transition: .5s;
 }
 #timezone-options #exit-button:hover {
-    color: red; background-color: white;
+    color: rgb(153, 55, 78); background-color: white;
 }
 .header-title {
     color: white;width: 100%; text-align: center; text-transform: uppercase;
