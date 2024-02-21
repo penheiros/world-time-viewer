@@ -1,9 +1,9 @@
 body {
-    background-image: linear-gradient(white, white);
+    background-color: rgba(190, 143, 143, 0.391);
 }
 :root {
-    --box-shadow-blur: 1.5vh;
-    --box-shadow-properties: 0px 0px var(--box-shadow-blur) 5px rgba(16,16,16,0.06);
+    --box-shadow-blur: 3vh;
+    --box-shadow-properties: 0vh 0vh var(--box-shadow-blur) 1vh rgba(16,16,16,0.06);
 }
 .container {
     display: flex; flex-direction: column; position: absolute; justify-content: center;

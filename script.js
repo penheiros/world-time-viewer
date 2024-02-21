@@ -55,16 +55,16 @@ document.querySelector('#background-change').addEventListener('click', ()=> {
 
     // Separate border properties changes for black and white colors
     if (background.name == 'black') {
-        root.style.setProperty('--box-shadow-properties', '0px 0px 5px 0px #fff');
+        root.style.setProperty('--box-shadow-properties', '0px 0px .5vh 0px #fff');
         elementsToChange.forEach(element => {element.style.color = 'white'});
     }
 
     else if (background.name == 'white') {
-        root.style.setProperty('--box-shadow-properties', '0px 0px 20px 10px rgba(16,16,16,0.06)');
+        root.style.setProperty('--box-shadow-properties', '0px 0px 2vh 1vh rgba(16,16,16,0.06)');
         elementsToChange.forEach(element => {element.style.color = 'black'});
     } 
     else {
-        root.style.setProperty('--box-shadow-properties', '0px 0px 20px 10px rgba(16,16,16,0.06)');
+        root.style.setProperty('--box-shadow-properties', '0px 0px 2vh 1vh rgba(16,16,16,0.06)');
         elementsToChange.forEach(element => {element.style.color = 'white'});
     };
 

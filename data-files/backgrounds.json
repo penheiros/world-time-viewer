@@ -5,5 +5,5 @@
     {"color": "linear-gradient(lightpink, lightpink)", "name" : "pink"},
     {"color" : "linear-gradient(lightgreen, lightgreen)", "name" : "green"},
     {"color" : "linear-gradient(90deg, rgba(213,144,255,1) 0%, rgba(29,223,253,1) 50%, rgba(213,144,255,1) 100%)", "name" : "pinkblue"},
-    {"color" : "linear-gradient(white, white)", "name" : "white"}
+    {"color" : "linear-gradient(rgb(190, 143, 143, 0.391), rgb(190, 143, 143, 0.391)", "name" : "white"}
 ]
