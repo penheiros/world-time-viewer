@@ -20,4 +20,4 @@
 
 ## Demo
 
-[Click here to view a live demo of the application.](https://penheiros.github.io/github-profile-inspector/)  
+[Click here to view a live demo of the application.](https://penheiros.github.io/world-time-viewer/)  
