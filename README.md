@@ -16,3 +16,8 @@
 1. Open the application in your web browser.
 2. Select the desired city from the dropdown menu or type to search.
 3. The current time for the selected city will be displayed instantly.
+
+
+## Demo
+
+[Click here to view a live demo of the application.](https://penheiros.github.io/github-profile-inspector/)  
